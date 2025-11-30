@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GroceryCart — Fresh groceries delivered fast</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="index.html" class="logo">GroceryCart</a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="cart-button" class="cart-button">
+          Cart <span id="cart-count" class="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-left">
+          <h1>Fresh groceries. Faster than you think.</h1>
+          <p>Local produce, pantry staples and daily essentials delivered to your door in under 25 minutes in selected cities.</p>
+          <div class="hero-ctas">
+            <a class="btn btn-primary" href="products.html">Shop Now</a>
+            <a class="btn btn-outline" href="about.html">Learn More</a>
+          </div>
+          <ul class="hero-features">
+            <li>Handpicked fresh produce</li>
+            <li>Trusted local vendors</li>
+            <li>Safe, contactless delivery</li>
+          </ul>
+        </div>
+        <div class="hero-right">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=1200&q=80" alt="Indian market vegetables" class="hero-image" />
+        </div>
+      </div>
+    </section>
+
+    <section class="featured container">
+      <div class="section-header">
+        <h2>Featured for you</h2>
+        <a class="view-all" href="products.html">View all products</a>
+      </div>
+      <div id="featured-grid" class="product-grid"></div>
+    </section>
+
+    <section class="how-it-works container">
+      <div class="hiw-cards">
+        <div class="hiw-card">
+          <h3>Choose</h3>
+          <p>Select fresh fruits, vegetables and essentials from trusted vendors.</p>
+        </div>
+        <div class="hiw-card">
+          <h3>Fast delivery</h3>
+          <p>Orders prepared locally and delivered in under 25 minutes in supported cities.</p>
+        </div>
+        <div class="hiw-card">
+          <h3>Quality guarantee</h3>
+          <p>If you’re not satisfied, we’ll make it right.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Copyright © 2025 GroceryCart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="cart-panel" class="cart-panel">
+    <div class="cart-panel-header">
+      <h3>Your Cart</h3>
+      <button id="close-cart" class="close-cart">×</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-panel-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total-amt">₹0</span>
+      </div>
+      <div class="cart-actions">
+        <button id="checkout-btn" class="btn btn-primary">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

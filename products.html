@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GroceryCart — Products</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="index.html" class="logo">GroceryCart</a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="cart-button" class="cart-button">
+          Cart <span id="cart-count" class="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="products-page container">
+    <section class="filters">
+      <div class="search-row">
+        <input id="search-input" type="search" placeholder="Search for products or categories" />
+      </div>
+      <div id="category-chips" class="chips">
+        <button data-cat="All" class="chip active">All</button>
+        <button data-cat="Fruits" class="chip">Fruits</button>
+        <button data-cat="Vegetables" class="chip">Vegetables</button>
+        <button data-cat="Dairy" class="chip">Dairy</button>
+        <button data-cat="Staples" class="chip">Staples</button>
+        <button data-cat="Snacks" class="chip">Snacks</button>
+        <button data-cat="Personal Care" class="chip">Personal Care</button>
+      </div>
+    </section>
+
+    <section class="catalog">
+      <div id="products-grid" class="product-grid"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Copyright © 2025 GroceryCart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="cart-panel" class="cart-panel">
+    <div class="cart-panel-header">
+      <h3>Your Cart</h3>
+      <button id="close-cart" class="close-cart">×</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-panel-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total-amt">₹0</span>
+      </div>
+      <div class="cart-actions">
+        <button id="checkout-btn" class="btn btn-primary">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

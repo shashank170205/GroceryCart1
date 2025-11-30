@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login · GroceryCart</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root{--accent:#2da84f;--accent-dark:#23863e;--muted:#6b7280;--card:#fff}
+    body{margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:linear-gradient(180deg,#f7f8fa,#fff);color:#0b1720}
+    .container{width:100%;max-width:1150px;margin:0 auto;padding:0 28px}
+    .site-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eef2f5;z-index:80;box-shadow:0 2px 8px rgba(15,15,15,0.03)}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 0}
+    .logo{font-weight:800;font-size:22px;color:var(--accent-dark);text-decoration:none}
+    .main-nav{display:flex;gap:18px;align-items:center}
+    .main-nav a{color:#0f1724;text-decoration:none;padding:8px 10px;border-radius:8px;font-weight:600}
+    .main-nav a:hover{background:#f1f7f3}
+    .header-actions{display:flex;align-items:center;gap:12px}
+    .cart-button{background:#fff;border:1px solid #e6eef0;padding:8px 12px;border-radius:10px;cursor:pointer;display:flex;align-items:center;gap:10px;font-weight:700}
+    .cart-badge{background:var(--accent);color:#fff;padding:3px 8px;border-radius:999px;font-size:13px;margin-left:6px}
+    main{padding:48px 0 80px}
+    .login-panel{width:520px;max-width:94%;margin:36px auto;background:var(--card);padding:28px;border-radius:12px;box-shadow:0 18px 36px rgba(10,10,10,0.06)}
+    .login-panel h2{margin:0 0 8px;font-size:22px}
+    .login-panel p.lead{margin:0 0 18px;color:var(--muted)}
+    .field{display:block;margin-bottom:14px}
+    .field label{display:block;font-weight:700;margin-bottom:8px}
+    .field input{width:100%;padding:12px;border-radius:8px;border:1px solid #e6eef0;font-size:15px}
+    .row{display:flex;gap:12px;align-items:center}
+    .btn-inline{padding:12px 16px;border-radius:10px;font-weight:800;cursor:pointer;border:0}
+    .btn-primary{background:var(--accent);color:#fff}
+    .btn-outline{background:transparent;border:1px solid #d6e9db;color:var(--accent-dark)}
+    .meta-row{display:flex;justify-content:space-between;align-items:center;margin:12px 0 18px;color:var(--muted);font-weight:600}
+    .small{font-size:13px;color:var(--muted)}
+    .error{color:#b91c1c;margin-top:8px;display:none}
+    .auth-area{display:flex;align-items:center;gap:10px}
+    .user-badge{background:#f1f9f3;color:var(--accent-dark);padding:6px 10px;border-radius:999px;font-weight:700}
+    .link-btn{background:transparent;border:0;color:var(--accent);font-weight:700;cursor:pointer}
+    .footer{border-top:1px solid #eef2f5;background:#fff;padding:18px 0;margin-top:40px;text-align:center}
+    @media (max-width:760px){.header-inner{padding:12px}.login-panel{padding:18px}}
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div style="display:flex;align-items:center;gap:20px">
+        <a href="index.html" class="logo">GroceryCart</a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="index.html">Home</a>
+          <a href="products.html">Products</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="header-actions">
+        <button id="cart-button" class="cart-button">Cart <span id="cart-count" class="cart-badge">0</span></button>
+        <div id="auth-area" class="auth-area"></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <div class="login-panel" role="form" aria-labelledby="login-title">
+      <h2 id="login-title">Sign in to GroceryCart</h2>
+      <p class="lead">Access your account to view orders, manage your cart and checkout faster.</p>
+      <form id="login-form" onsubmit="return false;">
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="you@example.com" required />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="At least 6 characters" required />
+        </div>
+        <div class="meta-row">
+          <label style="display:flex;align-items:center;gap:8px;font-weight:700">
+            <input id="remember" type="checkbox" />
+            Remember me
+          </label>
+          <a class="small" href="contact.html">Need help?</a>
+        </div>
+        <div class="row">
+          <button id="submit" class="btn-inline btn-primary" type="button">Sign in</button>
+          <a href="products.html" class="btn-inline btn-outline" style="display:inline-flex;align-items:center;justify-content:center">Browse</a>
+        </div>
+        <div id="error" class="error" role="alert"></div>
+        <div style="border-top:1px solid #f1f4f6;margin-top:18px;padding-top:14px;color:var(--muted);font-size:14px">
+          New to GroceryCart? You can browse products as a guest or contact support to create an account.
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <div id="cart-panel" class="cart-panel" style="position:fixed;right:-420px;top:0;height:100%;width:420px;background:#fff;box-shadow:-20px 40px 80px rgba(10,10,10,0.12);transition:right .28s cubic-bezier(.2,.9,.2,1);z-index:120;display:flex;flex-direction:column">
+    <div style="padding:18px;border-bottom:1px solid #f0f3f5;display:flex;justify-content:space-between;align-items:center">
+      <h3 style="margin:0">Your Cart</h3>
+      <button id="close-cart" style="background:transparent;border:0;font-size:22px;cursor:pointer">×</button>
+    </div>
+    <div id="cart-items" style="padding:12px;overflow:auto;flex:1"></div>
+    <div style="padding:14px;border-top:1px solid #f0f3f5">
+      <div style="display:flex;justify-content:space-between;font-weight:800;margin-bottom:12px">
+        <span>Total</span><span id="cart-total-amt">₹0</span>
+      </div>
+      <div style="display:flex;gap:8px">
+        <button id="checkout-btn" class="btn-inline btn-primary" style="flex:1">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">Copyright © 2025 GroceryCart. All rights reserved.</div>
+  </footer>
+
+  <script>
+    const USER_KEY = 'grocerycart_user_v1';
+    const CART_KEY = 'grocerycart_cart_v1';
+    function $(s){return document.querySelector(s)}
+    function getUser(){try{return JSON.parse(localStorage.getItem(USER_KEY))}catch(e){return null}}
+    function setUser(obj, remember){try{const val=JSON.stringify(obj); if(remember) localStorage.setItem(USER_KEY,val); else sessionStorage.setItem(USER_KEY,val)}catch(e){}}
+    function clearUser(){localStorage.removeItem(USER_KEY); sessionStorage.removeItem(USER_KEY)}
+    function showAuthArea(){const area=$('#auth-area'); area.innerHTML=''; const user = getUser() || JSON.parse(sessionStorage.getItem(USER_KEY)||'null'); if(user && user.email){ const badge=document.createElement('div'); badge.className='user-badge'; badge.textContent = user.email.split('@')[0]; const out=document.createElement('button'); out.className='link-btn'; out.textContent='Sign out'; out.addEventListener('click', ()=>{ clearUser(); renderAuth(); }); area.appendChild(badge); area.appendChild(out); } else { const inlink=document.createElement('a'); inlink.href='login.html'; inlink.textContent='Sign in'; inlink.style.fontWeight='700'; inlink.style.color='var(--accent)'; inlink.style.textDecoration='none'; area.appendChild(inlink); } }
+    function renderAuth(){showAuthArea(); renderCartCount(); renderCartPanel(); }
+    function validateEmail(email){return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)}
+    document.addEventListener('DOMContentLoaded', function(){
+      renderAuth();
+      const submit = $('#submit');
+      const email = $('#email');
+      const password = $('#password');
+      const remember = $('#remember');
+      const error = $('#error');
+      submit.addEventListener('click', function(){
+        error.style.display = 'none';
+        const e = (email.value||'').trim();
+        const p = (password.value||'').trim();
+        if(!validateEmail(e)){ error.textContent = 'Please enter a valid email address.'; error.style.display = 'block'; return; }
+        if(p.length < 6){ error.textContent = 'Password must be at least 6 characters.'; error.style.display = 'block'; return; }
+        const user = {email:e, created: new Date().toISOString()};
+        setUser(user, remember.checked);
+        renderAuth();
+        window.location.href = 'index.html';
+      });
+      const cartBtn = $('#cart-button');
+      const cartPanel = document.getElementById('cart-panel');
+      const closeCart = $('#close-cart');
+      cartBtn && cartBtn.addEventListener('click', ()=>{ cartPanel.style.right = '0'; renderCartPanel(); });
+      closeCart && closeCart.addEventListener('click', ()=>{ cartPanel.style.right = '-420px'; });
+      $('#checkout-btn') && $('#checkout-btn').addEventListener('click', ()=>{ alert('Checkout is not implemented in this demo.'); });
+      renderCartCount();
+      renderCartPanel();
+    });
+
+    function loadCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY) || '{}') } catch(e) { return {} } }
+    function saveCart(cart){ try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)) }catch(e){} renderCartCount() }
+    function renderCartCount(){ const cart = loadCart(); const total = Object.values(cart).reduce((s,i)=>s+i.qty,0); document.querySelectorAll('#cart-count').forEach(el=>el.textContent = total) }
+    function renderCartPanel(){ const container = document.getElementById('cart-items'); if(!container) return; const cart = loadCart(); container.innerHTML = ''; const keys = Object.keys(cart); if(keys.length===0){ const e = document.createElement('div'); e.style.padding='24px'; e.style.color='var(--muted)'; e.textContent = 'Your cart is empty.'; container.appendChild(e); document.getElementById('cart-total-amt').textContent='₹0'; return; } keys.forEach(k=>{ const item = cart[k]; const row = document.createElement('div'); row.style.display='flex'; row.style.justifyContent='space-between'; row.style.alignItems='center'; row.style.marginBottom='12px'; const info = document.createElement('div'); info.style.flex='1'; const name = document.createElement('div'); name.textContent = item.name; name.style.fontWeight='700'; const meta = document.createElement('div'); meta.style.color='var(--muted)'; meta.style.fontSize='13px'; meta.textContent = '₹' + item.price.toLocaleString('en-IN') + ' • ' + item.qty + ' x'; info.appendChild(name); info.appendChild(meta); const controls = document.createElement('div'); controls.style.display='flex'; controls.style.alignItems='center'; controls.style.gap='8px'; const minus = document.createElement('button'); minus.textContent='-'; minus.style.padding='6px'; minus.addEventListener('click', ()=>{ changeQty(k,-1); }); const qty = document.createElement('div'); qty.textContent = item.qty; qty.style.minWidth='26px'; qty.style.textAlign='center'; const plus = document.createElement('button'); plus.textContent='+'; plus.style.padding='6px'; plus.addEventListener('click', ()=>{ changeQty(k,1); }); controls.appendChild(minus); controls.appendChild(qty); controls.appendChild(plus); const price = document.createElement('div'); price.textContent = '₹' + (item.price * item.qty).toLocaleString('en-IN'); price.style.fontWeight='800'; row.appendChild(info); row.appendChild(controls); row.appendChild(price); container.appendChild(row); }); const total = Object.values(cart).reduce((s,i)=>s + (i.price * i.qty), 0); document.getElementById('cart-total-amt').textContent = '₹' + total.toLocaleString('en-IN'); }
+
+    function changeQty(id, delta){ const cart = loadCart(); if(!cart[id]) return; cart[id].qty += delta; if(cart[id].qty <= 0) delete cart[id]; saveCart(cart); renderCartPanel(); }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About GroceryCart</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <a href="index.html" class="logo">GroceryCart</a>
+      </div>
+      <nav class="main-nav">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button id="cart-button" class="cart-button">
+          Cart <span id="cart-count" class="cart-badge">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container about-content">
+    <section class="about-hero">
+      <h1>About GroceryCart</h1>
+      <p>GroceryCart is an Indian online grocery platform focused on speed, reliability and fresh produce. We partner with local vendors to bring nearby markets to your doorstep so you can get fresh fruits, vegetables and household essentials without compromise.</p>
+      <p>We designed our operations to be fast and dependable. Orders are packed carefully and delivered by trained partners with strict quality checks. Our technology helps vendors manage inventory efficiently while offering customers the freshest selection every day.</p>
+      <p>GroceryCart blends the convenience of modern e-commerce with the trust and local touch of neighbourhood markets. Our aim is to make grocery shopping effortless and enjoyable for urban customers across cities we operate in.</p>
+    </section>
+
+    <section class="highlight-card">
+      <div class="card-inner">
+        <h3>Quick facts</h3>
+        <ul>
+          <li><strong>Founded:</strong> 2025</li>
+          <li><strong>Operating cities:</strong> Delhi NCR, Bengaluru, Mumbai, Pune</li>
+          <li><strong>Average delivery time:</strong> Under 25 minutes</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>Copyright © 2025 GroceryCart. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <div id="cart-panel" class="cart-panel">
+    <div class="cart-panel-header">
+      <h3>Your Cart</h3>
+      <button id="close-cart" class="close-cart">×</button>
+    </div>
+    <div id="cart-items" class="cart-items"></div>
+    <div class="cart-panel-footer">
+      <div class="cart-total">
+        <span>Total</span>
+        <span id="cart-total-amt">₹0</span>
+      </div>
+      <div class="cart-actions">
+        <button id="checkout-btn" class="btn btn-primary">Proceed to Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
